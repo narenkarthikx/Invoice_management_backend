@@ -1,97 +1,85 @@
-# edAdmin
+# 🧾 Invoice Management Backend API
 
-A brief description of your project.
+A secure and scalable backend API built with **Express.js** and **MongoDB** for managing invoices. This project includes features like JWT-based user authentication, role-based access, and CRUD operations for invoices.
 
-## Table of Contents
+## 🚀 Features
 
-- [Introduction](#introduction)
-- [Features](#features)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Usage](#usage)
-- [API Endpoints](#api-endpoints)
-- [Testing](#testing)
-- [Contributing](#contributing)
-- [License](#license)
+- ✅ User Registration and Login (with JWT)
+- 🔐 Protected Routes using Middleware
+- 🧾 Auto-generated Invoice Numbers (with serial logic)
+- 🧠 Role-based Access (Admin support)
+- 🔄 Full CRUD Support for Invoices
+- 🌐 CORS-enabled API
+- 🔐 Passwords securely hashed with Bcrypt
 
-## Introduction
+## 🧰 Tech Stack
 
-# Invoice Management System
+- **Node.js** --> JavaScript runtime environment
+- **Express.js** --> Web framework for routing and middleware
+- **MongoDB** --> NoSQL database for storing user and invoice data
+- **Mongoose** --> ODM for MongoDB schemas and models
+- **JWT (jsonwebtoken)** --> Secure authentication tokens
+- **Bcrypt** --> Password hashing for user credentials
+- **dotenv** --> Environment variable configuration
+- **CORS** --> Cross-origin resource sharing middleware
 
-A secure and efficient system for managing invoices, including user registration, authentication, and invoice creation. This system is built using Node.js, Express, and MongoDB, providing a robust solution for handling financial transactions.
+## 📂 Project Structure
 
-## Features
+- `models/`  
+  → Contains the Mongoose schema for `Invoice`
 
-- User registration and login with secure password hashing
-- Role-based access control, allowing admin-only access to certain functionalities
-- Creation and storage of invoices with a unique invoice number
-- Retrieval of all invoices or a specific invoice by its number
-- Deletion of invoices with admin privileges
+- `.env.example`  
+  → Sample file for environment variables setup
 
+- `server.js`  
+  → Main backend application file
 
-## Prerequisites
+- `package.json`  
+  → Project dependencies and scripts
 
-Make sure you have the following installed:
+- `.gitignore`  
+  → Specifies which files/folders Git should ignore
 
-- [Node.js](https://nodejs.org/)
-- [MongoDB](https://www.mongodb.com/)
+- `README.md`  
+  → Project overview and documentation
 
+## 🔐 Environment Variables
 
-## Installation
+Create a `.env` file in the root directory:
 
-1. Clone the repository:
+MONGODB_URI=your_mongodb_connection_string
+SECRET_KEY=your_jwt_secret_key
+TOKEN_EXPIRATION=86400
+PORT=8080
 
-    ```bash
-    git clone https://github.com/your-username/your-project.git
-    cd your-project
-    ```
+## 🧾 Invoice Management
 
-2. Install dependencies:
+All endpoints below require a valid JWT token.
 
-    ```bash
-    npm install
-    ```
-   Ensure that you have a `.env` file configured with your MongoDB connection string and other necessary environment variables.
+| Method | Endpoint                         | Description             |
+|--------|----------------------------------|-------------------------|
+| POST   | `/api/invoices`                 | Create a new invoice    |
+| GET    | `/api/invoices`                 | Get all invoices        |
+| GET    | `/api/invoices/:invoiceNumber`  | Get a specific invoice  |
+| PUT    | `/api/invoices/:invoiceNumber`  | Update an invoice       |
+| DELETE | `/api/invoices/:invoiceNumber`  | Delete an invoice       |
 
-## Configuration
+## 📦 Installation & Running Locally
 
-Create a `.env` file in the project root with the following:
+# Clone the repo
 
-DB_URL=your_mongodb_connection_string
-SECRET_KEY=your_secret_key
-TOKEN_EXPIRATION=3600  # token expiration time in seconds
-PORT=8080  # or your preferred port
+git clone https://github.com/your-username/invoice-management-backend.git
+cd invoice-management-backend
 
+# Install dependencies
 
-## Usage
-Run the application:
+npm install
 
-npm start
+# Set up environment variables
 
+Copy .env.example to .env and fill in your values.
 
-## API Endpoints
+# Start the server
 
-- `POST /register`: User registration
-- `POST /login`: User login
-- `POST /api/invoices`: Add an invoice
-- `GET /api/invoices`: Get all invoices
-- `GET /api/invoices/:invoiceNumber`: Get a single invoice
-- `DELETE /api/invoices/:invoiceNumber`: Delete an invoice (Admin access required)
+node server.js
 
-
-## Testing
-
-Run tests:
-
-npm test
-
-
-## Contributing
-
-Feel free to contribute! Please follow our [Contribution Guidelines]
-
-
-## License
-
-This project is licensed under the [MIT License]
